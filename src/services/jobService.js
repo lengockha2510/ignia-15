@@ -1,13 +1,9 @@
 // jobService.js
-export const fetchJobs = () => {
-    return fetch('/jobs.json')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Không thể lấy danh sách việc làm');
-        }
-        return res.json();
-      });
-  };
+export async function fetchJobs() {
+  const response = await fetch('https://ignia115.netlify.app/jobs.json');
+  const jobs = await response.json();
+  return jobs;
+}
   
   export const fetchJobById = async (id) => {
     const jobs = await fetchJobs();
