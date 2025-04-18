@@ -1,6 +1,6 @@
 // jobService.js
 export async function fetchJobs() {
-  const response = await fetch('https://ignia115.netlify.app/jobs.json');
+  const response = await fetch('/jobs.json');
   const jobs = await response.json();
   return jobs;
 }
