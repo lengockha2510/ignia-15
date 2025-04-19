@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently --kill-others \"vite\" \"json-server --watch src/jobs.json --port 8000\"",
+    "dev": "concurrently \"vite\" \"json-server --watch public/jobs.json --port 8000\"",
     "build": "vite build",
     "preview": "vite preview",
     "server": "json-server --watch src/jobs.json --port 8000",
