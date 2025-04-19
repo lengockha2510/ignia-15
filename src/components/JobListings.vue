@@ -1,9 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import JobListing from './JobListing.vue'
-import { reactive, defineProps, onMounted } from 'vue'
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import { fetchJobs } from '@/services/jobService'
+import { RouterLink } from "vue-router";
+import JobListing from "./JobListing.vue";
+import { reactive, defineProps, onMounted } from "vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import { fetchJobs } from "@/services/jobService";
 
 const props = defineProps({
   limit: {
@@ -14,27 +14,26 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-})
+});
 
 const state = reactive({
   jobs: [],
   isLoading: true,
-})
+});
 
 onMounted(async () => {
-  const res = await fetch('/jobs.json')
-  const data = await res.json()
-  console.log('Jobs fetched:', data) // 👈 BẮT BUỘC phải thấy dòng này
-  state.jobs = data
-  state.isLoading = false
-})
-
+  const res = await fetch("/jobs.json");
+  const data = await res.json();
+  console.log("Jobs fetched:", data); // 👈 BẮT BUỘC phải thấy dòng này
+  state.jobs = data;
+  state.isLoading = false;
+});
 </script>
 
 <template>
   <p v-if="!state.isLoading && state.jobs.length === 0" class="text-center text-gray-500">
-  Không có công việc nào được tìm thấy.
-</p>
+    Không có công việc nào được tìm thấy.
+  </p>
 
   <section class="bg-blue-50 px-4 py-10">
     <div class="container-xl lg:container m-auto">
@@ -49,11 +48,7 @@ onMounted(async () => {
 
       <!-- Job Listings -->
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <JobListing
-          v-for="job in (Array.isArray(state.jobs) ? state.jobs.slice(0, props.limit || state.jobs.length) : [])"
-          :key="job.id"
-          :job="job"
-        />
+        <JobListing v-for="job in state.jobs" :key="job.id" :job="job" />
       </div>
     </div>
   </section>
