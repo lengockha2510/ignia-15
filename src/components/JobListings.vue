@@ -22,16 +22,11 @@ const state = reactive({
 })
 
 onMounted(async () => {
-  try {
-    const res = await fetch('/jobs.json')
-    const data = await res.json()
-    state.jobs = data
-  } catch (error) {
-    console.error('Lỗi khi fetch jobs:', error)
-    state.jobs = []
-  } finally {
-    state.isLoading = false
-  }
+  const res = await fetch('/jobs.json')
+  const data = await res.json()
+  console.log('Jobs fetched:', data) // 👈 BẮT BUỘC phải thấy dòng này
+  state.jobs = data
+  state.isLoading = false
 })
 
 </script>
