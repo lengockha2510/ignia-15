@@ -23,19 +23,24 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await fetchJobs()
-    // Kiểm tra nếu response.data là mảng thì mới gán
-    state.jobs = Array.isArray(response.data) ? response.data : []
+    const res = await fetch('/jobs.json')
+    const data = await res.json()
+    state.jobs = data
   } catch (error) {
-    console.error('Error fetching jobs', error)
-    state.jobs = [] // fallback nếu lỗi
+    console.error('Lỗi khi fetch jobs:', error)
+    state.jobs = []
   } finally {
     state.isLoading = false
   }
 })
+
 </script>
 
 <template>
+  <p v-if="!state.isLoading && state.jobs.length === 0" class="text-center text-gray-500">
+  Không có công việc nào được tìm thấy.
+</p>
+
   <section class="bg-blue-50 px-4 py-10">
     <div class="container-xl lg:container m-auto">
       <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
