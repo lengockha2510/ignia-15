@@ -34,10 +34,10 @@ const deleteJob = async () => {
 onMounted(async () => {
   try {
     const response = await axios.get(`/api/jobs/${jobId}`);
-    console.log('Job data:', response.data); // 👈 Thêm dòng này kiểm tra
+    console.log("API response:", response.data); // 👈 kiểm tra nội dung API
     state.job = response.data;
   } catch (error) {
-    console.error('Error fetching job', error);
+    console.error("Error fetching job", error);
   } finally {
     state.isLoading = false;
   }
@@ -70,7 +70,7 @@ onMounted(async () => {
             </h3>
 
             <p class="mb-4">
-              {{ state.job.description }}
+               {{ state.job.description || 'Không có mô tả' }}
             </p>
 
             <h3 class="text-green-800 text-lg font-bold mb-2">Salary</h3>
