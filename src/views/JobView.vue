@@ -78,48 +78,48 @@ onMounted(async () => {
         </main>
 
         <!-- Sidebar -->
-        <aside>
-          <!-- Company Info -->
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold mb-6">Company Info</h3>
+<aside>
+  <!-- Company Info -->
+  <div v-if="state.job.company" class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold mb-6">Company Info</h3>
 
-            <h2 class="text-2xl">{{ state.job.company.name }}</h2>
+    <h2 class="text-2xl">{{ state.job.company.name }}</h2>
 
-            <p class="my-2">
-              {{ state.job.company.description }}
-            </p>
+    <p class="my-2">
+      {{ state.job.company.description }}
+    </p>
 
-            <hr class="my-4" />
+    <hr class="my-4" />
 
-            <h3 class="text-xl">Contact Email:</h3>
+    <h3 class="text-xl">Contact Email:</h3>
 
-            <p class="my-2 bg-green-100 p-2 font-bold">
-              {{ state.job.company.contactEmail }}
-            </p>
+    <p class="my-2 bg-green-100 p-2 font-bold">
+      {{ state.job.company.contactEmail }}
+    </p>
 
-            <h3 class="text-xl">Contact Phone:</h3>
+    <h3 class="text-xl">Contact Phone:</h3>
 
-            <p class="my-2 bg-green-100 p-2 font-bold">
-              {{ state.job.company.contactPhone }}
-            </p>
-          </div>
+    <p class="my-2 bg-green-100 p-2 font-bold">
+      {{ state.job.company.contactPhone }}
+    </p>
+  </div>
 
-          <!-- Manage -->
-          <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-            <h3 class="text-xl font-bold mb-6">Manage Job</h3>
-            <RouterLink
-              :to="`/jobs/edit/${state.job.id}`"
-              class="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-              >Edit Job</RouterLink
-            >
-            <button
-              @click="deleteJob"
-              class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-            >
-              Delete Job
-            </button>
-          </div>
-        </aside>
+  <!-- Manage -->
+  <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+    <h3 class="text-xl font-bold mb-6">Manage Job</h3>
+    <RouterLink
+      :to="`/jobs/edit/${state.job.id}`"
+      class="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+      >Edit Job</RouterLink
+    >
+    <button
+      @click="deleteJob"
+      class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+    >
+      Delete Job
+    </button>
+  </div>
+</aside>
       </div>
     </div>
   </section>
