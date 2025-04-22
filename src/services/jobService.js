@@ -1,4 +1,5 @@
 // jobService.js
+const API_URL = 'http://localhost:5173/jobs';
 export async function fetchJobs() {
   const response = await fetch('/jobs.json');
   const jobs = await response.json();
