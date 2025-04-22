@@ -34,14 +34,21 @@ const deleteJob = async () => {
 onMounted(async () => {
   try {
     const response = await axios.get(`/api/jobs/${jobId}`);
-    console.log("API response:", response.data); // 👈 kiểm tra nội dung API
+    console.log("🔍 Dữ liệu API trả về:", response); // ← kiểm tra kỹ tại đây
+
+    if (!response.data || Object.keys(response.data).length === 0) {
+      console.warn("⚠️ Không có dữ liệu trả về cho jobId:", jobId);
+      return;
+    }
+
     state.job = response.data;
   } catch (error) {
-    console.error("Error fetching job", error);
+    console.error("❌ Lỗi khi lấy dữ liệu công việc:", error);
   } finally {
     state.isLoading = false;
   }
 });
+
 
 </script>
 
