@@ -34,6 +34,7 @@ const deleteJob = async () => {
 onMounted(async () => {
   try {
     const response = await axios.get(`/api/jobs/${jobId}`);
+    console.log('Job data:', response.data); // 👈 Thêm dòng này kiểm tra
     state.job = response.data;
   } catch (error) {
     console.error('Error fetching job', error);
@@ -41,6 +42,7 @@ onMounted(async () => {
     state.isLoading = false;
   }
 });
+
 </script>
 
 <template>
