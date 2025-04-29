@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { fileURLToPath, URL } from 'node:url'; // Thêm dòng này để xử lý đường dẫn
+import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
+  base: '/', // ⚠️ THÊM DÒNG NÀY để đảm bảo router hoạt động tốt khi deploy
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)), // alias @ trỏ về thư mục src
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
