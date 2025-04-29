@@ -1,13 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { fetchJobById } from '../services/jobService';
 
 const route = useRoute();
 const job = ref(null);
 
-onMounted(async () => {
-  job.value = await fetchJobById(route.params.id);
+// Dữ liệu mẫu
+const mockJobs = [
+  { id: '1', title: 'Lập trình viên Vue', description: 'Xây dựng giao diện web.', salary: 30000 },
+  { id: '2', title: 'Tester phần mềm', description: 'Kiểm thử ứng dụng.', salary: 20000 },
+];
+
+onMounted(() => {
+  job.value = mockJobs.find(j => j.id === route.params.id);
 });
 </script>
 
