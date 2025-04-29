@@ -21,7 +21,7 @@
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.2.3",
     "autoprefixer": "^10.4.19",
     "concurrently": "^9.1.2",
     "postcss": "^8.4.38",
